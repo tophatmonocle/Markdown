@@ -35,6 +35,13 @@ class MarkdownTests: XCTestCase {
     }
     
     func testExample() {
+        let md = try? Markdown(string:"% test doc\n% daniel\n% 02.03.2016\n<style>bg-color: green</style>\n# text goes here", options: [.TableOfContents])
+        print("document: ", try? md?.document())
+        print("css: ", try? md?.css())
+        print("toc: ", try? md?.tableOfContents())
+        print("title: ", md?.title)
+        print("author: ", md?.author)
+        print("date: ", md?.date)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
