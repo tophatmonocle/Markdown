@@ -89,7 +89,8 @@
 				65285FF31C86028700A67889 /* MarkdownTests.swift */,
 				65285FF51C86028700A67889 /* Info.plist */,
 			);
-			path = MarkdownTests;
+			name = MarkdownTests;
+			path = Tests/Markdown;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +110,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65285FF81C86028700A67889 /* Build configuration list for PBXNativeTarget "Markdown" */;
 			buildPhases = (
+				965FCFE41C872299006E84C5 /* Check Carthage Checkouts direcotry */,
 				65285FDF1C86028600A67889 /* Sources */,
 				65285FE01C86028600A67889 /* Frameworks */,
 				65285FE11C86028600A67889 /* Headers */,
@@ -193,6 +195,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		965FCFE41C872299006E84C5 /* Check Carthage Checkouts direcotry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Carthage Checkouts direcotry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script checks Carthage/Checkouts directory.\n# If directory empty - then we runned as dependency\n# for some another project.\n# We need make soft link to parent Checkouts directory\nset -e\n\nif [ -d \"${SRCROOT}/Carthage\" ]; then\n  if [ ! -d \"${SRCROOT}/Carthage/Checkouts\" ]; then\n    cd \"${SRCROOT}/Carthage\"\n    ln -s \"../../\" Checkouts\n  fi\nfi\n\nexit 0";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65285FDF1C86028600A67889 /* Sources */ = {
@@ -330,7 +349,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Markdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts $(PROJECT_DIR/Packages/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -351,7 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Markdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Carthage/Checkouts $(PROJECT_DIR/Packages/**";
 			};
 			name = Release;
 		};
@@ -359,7 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MarkdownTests/Info.plist;
+				INFOPLIST_FILE = Tests/Markdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.MarkdownTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -370,7 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MarkdownTests/Info.plist;
+				INFOPLIST_FILE = Tests/Markdown/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.MarkdownTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

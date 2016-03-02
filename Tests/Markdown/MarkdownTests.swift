@@ -24,16 +24,6 @@ import XCTest
 
 class MarkdownTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     func testHeader() {
         do {
             let md = try Markdown(string:"% test\n% daniel\n% 02.03.2016\n")
@@ -89,3 +79,16 @@ class MarkdownTests: XCTestCase {
     }
     
 }
+
+#if os(Linux)
+extension MarkdownTests : XCTestCaseProvider {
+	var allTests : [(String, () throws -> Void)] {
+		return [
+			("testHeader", testHeader),
+			("testBody", testBody),
+			("testTableOfContents", testTableOfContents),
+			("testStyle", testStyle),
+		]
+	}
+}
+#endif
