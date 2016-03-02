@@ -34,22 +34,57 @@ class MarkdownTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        let md = try? Markdown(string:"% test doc\n% daniel\n% 02.03.2016\n<style>bg-color: green</style>\n# text goes here", options: [.TableOfContents])
-        print("document: ", try? md?.document())
-        print("css: ", try? md?.css())
-        print("toc: ", try? md?.tableOfContents())
-        print("title: ", md?.title)
-        print("author: ", md?.author)
-        print("date: ", md?.date)
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testHeader() {
+        do {
+            let md = try Markdown(string:"% test\n% daniel\n% 02.03.2016\n")
+            
+            let title = md.title
+            XCTAssertNotNil(title)
+            XCTAssertEqual(title!, "test")
+            
+            let author = md.author
+            XCTAssertNotNil(author)
+            XCTAssertEqual(author!, "daniel")
+            
+            let date = md.date
+            XCTAssertNotNil(date)
+            XCTAssertEqual(date!, "02.03.2016")
+        } catch {
+            XCTFail("Exception caught")
+        }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testBody() {
+        do {
+            let md = try Markdown(string:"# test header")
+            let document = try md.document()
+            XCTAssertEqual(document, "<h1>test header</h1>")
+        } catch {
+            XCTFail("Exception caught")
+        }
+    }
+    
+    func testTableOfContents() {
+        do {
+            let md = try Markdown(string:"# test header", options: .TableOfContents)
+            let document = try md.document()
+            XCTAssertEqual(document, "<a name=\"test.header\"></a>\n<h1>test header</h1>")
+            let toc = try md.tableOfContents()
+            XCTAssertEqual(toc, "<ul>\n <li><a href=\"#test.header\">test header</a></li>\n</ul>\n")
+        } catch {
+            XCTFail("Exception caught")
+        }
+    }
+    
+    func testStyle() {
+        do {
+            let md = try Markdown(string:"<style>background-color: yellow;</style>\n# test header")
+            let document = try md.document()
+            XCTAssertEqual(document, "\n\n<h1>test header</h1>")
+            let css = try md.css()
+            XCTAssertEqual(css, "<style>background-color: yellow;</style>\n")
+        } catch {
+            XCTFail("Exception caught")
         }
     }
     

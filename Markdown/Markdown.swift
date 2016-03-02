@@ -39,7 +39,7 @@ public class Markdown {
         mkd_cleanup(_markdown)
     }
     
-    public convenience init(string:String, options:Options) throws {
+    public convenience init(string:String, options:Options = .None) throws {
         try self.init(markdown: mkd_string(string, Int32(string.characters.count), 0), options: options)
     }
     
