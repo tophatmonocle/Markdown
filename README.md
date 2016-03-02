@@ -14,7 +14,7 @@
 
 ## Goals
 
-Markdown library was mainly introduced to fulfill the needs of [Swift Express](https://github.com/crossroadlabs/Express) - web application server side framework for Swift. Still we hope it will be useful for everybody else.
+[<img align="left" src="../Express/logo-full.png" hspace="20" height=128>](#logo) Markdown library was mainly introduced to fulfill the needs of [Swift Express](https://github.com/crossroadlabs/Express) - web application server side framework for Swift. Still we hope it will be useful for everybody else.
 
 ## Getting started
 
