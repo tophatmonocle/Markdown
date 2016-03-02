@@ -1,8 +1,4 @@
-<div align="center">
-
-[![Foo](https://cdn0.iconfinder.com/data/icons/octicons/1024/markdown-256.png)](https://github.com/crossroadlabs/Markdown)
-
-</div>
+[<p align="center"><img alt="Markdown" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/markdown-256.png"></p>](https://github.com/crossroadlabs/Markdown)
 
 # Markdown
 
