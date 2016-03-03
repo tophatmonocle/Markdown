@@ -44,7 +44,7 @@ public class Markdown {
     }
     
     private func data(fun:MKDFUN, deallocator:UnsafeMutablePointer<Int8>->Void) throws -> String {
-        var dest = [UnsafeMutablePointer<Int8>](count: 1, repeatedValue: UnsafeMutablePointer<Int8>())
+        var dest = [UnsafeMutablePointer<Int8>](count: 1, repeatedValue: UnsafeMutablePointer<Int8>.alloc(1))
         
         let result = fun(_markdown, &dest)
         defer {
