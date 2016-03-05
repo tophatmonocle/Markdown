@@ -22,6 +22,10 @@
 import XCTest
 @testable import Markdown
 
+#if !os(Linux) || dispatch
+import Dispatch
+#endif
+
 class MarkdownTests: XCTestCase {
     
     func testHeader() {
@@ -78,17 +82,48 @@ class MarkdownTests: XCTestCase {
         }
     }
     
+    #if !os(Linux) || dispatch
+    // no dispatch
+    func testStress() {
+        let id = NSUUID().UUIDString
+        let queue = dispatch_queue_create(id, DISPATCH_QUEUE_CONCURRENT)
+        
+        for i in 0...10000 {
+            dispatch_async(queue) {
+                do {
+                    let markdown = try Markdown(string: "# test line", options: .None)
+                    let html = try markdown.document()
+                    
+                    XCTAssertEqual(html, "<h1>test line</h1>")
+                    print("OK", i)
+                } catch {
+                    XCTFail("Exception caught")
+                }
+            }
+        }
+        
+        sleep(5)
+    }
+    
+    #endif
+    
 }
 
 #if os(Linux)
 extension MarkdownTests : XCTestCaseProvider {
 	var allTests : [(String, () throws -> Void)] {
-		return [
+        var tests:[(String, () throws -> Void)] = [
 			("testHeader", testHeader),
 			("testBody", testBody),
 			("testTableOfContents", testTableOfContents),
 			("testStyle", testStyle),
 		]
+        
+        #if dispatch
+        tests.append(("testStress", testStress))
+        #endif
+        
+        return tests
 	}
 }
 #endif
