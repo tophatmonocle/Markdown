@@ -25,8 +25,8 @@ matrix:
         #- pod trunk push CrossroadRegex.podspec
       deploy:
         provider: releases
-        #api_key:
-        #  secure: WEnu9clOi284PT/KsPgvRiYvK5WDbLsMwE0fj9/hoscCXM41dVLhJ7PWe9DoXThNtfSGjlIOvz6E6vCDniSB0NuErBDv9JT2GGZMA35kIvRnGxrHgfjFrIliQy5xqnQZFruKksnPvKBmwf02psw6wwvQmNh/AcC8tvOJZhhrIWt6S7ZLV0ypPsbYNVWS5dTUnZ5XglwbBaHrXkaps2acaG6kf2VdMccgXxB9/pudfJAvrTVwxf7U7ANS6wWv3k0wqTFwx+vIjtqXcnnoD/ulsQFM9MFueGiQ3o3DtdGyi7Q/L/m2SQkRRce4INnCUHhWXiWjnJgrupS2/+X4eFTuX+aBN0ctffD2rfj8Ql6Sane2Za/hmhohreroZ06YY7yN6mQ4wG4gAYy10HXdokjFHPW8B0/1mgMKPky0VsYMzbjiGsR9U0ePXNCTDVgw/HENEyECBFxbzvFuWq9Ncz0c8T9u8FIjXF8UGysuIaiUQJ/IeLHYkZ2d/id6EtJDwn8GAq85bUi0DomePoCOqzdFKHsecnX0ISaf2w+FWSHzbn7UQSgeoODVEDThvnKujWbJ4seOtfev9rwce/Uh5sh8ciGXQsScecwg7BcJml3c327yT6PZypoPxOAyRaXLgVbXoIA4oLj7tF7maggDynPGRS1IGnWgeJ2KnOhgo+Yudw0=
+        api_key:
+          secure: IHTjFNMxpYwvKNHST771fewdcNONuiOMuMNkvG8exQNCDGYbs2PxauUHTUeudJxtyZzXoQHVwiHZMHmDeslWJnmRNohRZwTFmzXwxpB+XVJZkTXpGm2L+8ZLpW6X3PZ/1LIr5TTazddpU34MEi8sjvo02QQS6AgB/AMjoiU665w7hIWwUoUcVyFjlg3nR0fHWLCM61CsBfNNduDLjKVOlE3pRSjyb8qUs4BqbhczgnwDVuV3ouQlErzrWhWu9OWJZ+snFHWmzMfcQX4FMAubdi/eXCKkRugKOS8SZ9uGQrDaZqlXpZD4qhhH8Y4ITa3CLFqroeoBaayjK1W+7Zb63BTbxGnkwsbvlYWhDtgxxfHT6c94tvfoh8u8sTBbXg2M0wze8Xyfyi8uqR3DT1IxKJojYfwBEJ8/JlHlYXBHdoZC2BAkLduDiJ18E9ulvAzg1KaGhDKBE4gbGweiOMjp9SsNcRFUAeGRSc3SeA6mBXrScyFe+OgdSVGWJTUau9y3Mh7yAgFQ9+KnUwqdlLaYNENLuRlRQ1ozboy92A77HbDSefoVBABrd2bxW/Mdbz+5bUky8Vzft4QQQOhTpFd78A/ilZFlSSD+usaWHhpZCVjMogGvnIsJH10VSutnHENhwLDBEa51sdsLyAeIU8H2oS4VnnRg8CftddypY0CkG5c=
         file: $MODULE_NAME.framework.zip
         skip_cleanup: true
         on:
