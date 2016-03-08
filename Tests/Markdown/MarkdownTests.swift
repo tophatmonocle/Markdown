@@ -89,20 +89,21 @@ class MarkdownTests: XCTestCase {
         let queue = dispatch_queue_create(id, DISPATCH_QUEUE_CONCURRENT)
         
         for i in 0...10000 {
+            let expectation = self.expectationWithDescription("OK " + String(i))
             dispatch_async(queue) {
                 do {
-                    let markdown = try Markdown(string: "# test line", options: .None)
+                    let markdown = try Markdown(string: "# test line " + String(i), options: .None)
                     let html = try markdown.document()
                     
-                    XCTAssertEqual(html, "<h1>test line</h1>")
-                    print("OK", i)
+                    XCTAssertEqual(html, "<h1>test line " + String(i) + "</h1>")
+                    expectation.fulfill()
                 } catch {
                     XCTFail("Exception caught")
                 }
             }
         }
         
-        sleep(5)
+        self.waitForExpectationsWithTimeout(30, handler: nil)
     }
     
     #endif
