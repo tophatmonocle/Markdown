@@ -10,7 +10,7 @@
 [![GitHub license](https://img.shields.io/badge/license-LGPL v3-green.svg)](https://raw.githubusercontent.com/crossroadlabs/Markdown/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/crossroadlabs/Markdown.svg)](https://github.com/crossroadlabs/Markdown/releases)
 
-## Full [markdown](https://en.wikipedia.org/wiki/Markdown) support for Swift - wrapprer over [Discount](https://github.com/Orc/discount) (this actually is what GitHub uses deep down)
+## Full [markdown](https://en.wikipedia.org/wiki/Markdown) support for Swift - wrapper over [Discount](https://github.com/Orc/discount) (this actually is what GitHub uses deep down)
 
 ## Goals
 
