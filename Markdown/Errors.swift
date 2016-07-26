@@ -19,9 +19,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Foundation
-
-public enum Error : ErrorType {
+public enum Error : ErrorProtocol {
     case Compile(code:Int32)
     case Produce(code:Int32)
 }

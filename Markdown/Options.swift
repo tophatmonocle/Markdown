@@ -22,7 +22,7 @@
 import Foundation
 import CDiscount
 
-public struct Options : OptionSetType {
+public struct Options : OptionSet {
     public let rawValue: UInt32
     
     public init(rawValue: UInt32) {

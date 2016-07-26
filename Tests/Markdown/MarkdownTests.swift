@@ -20,6 +20,8 @@
 //===----------------------------------------------------------------------===//
 
 import XCTest
+import Foundation
+
 @testable import Markdown
 
 #if !os(Linux) || dispatch
@@ -85,12 +87,12 @@ class MarkdownTests: XCTestCase {
     #if !os(Linux) || dispatch
     // no dispatch
     func testStress() {
-        let id = NSUUID().UUIDString
-        let queue = dispatch_queue_create(id, DISPATCH_QUEUE_CONCURRENT)
+        let id = UUID().uuidString
+        let queue = DispatchQueue(label: id, attributes: DispatchQueueAttributes.concurrent)
         
         for i in 0...10000 {
-            let expectation = self.expectationWithDescription("OK " + String(i))
-            dispatch_async(queue) {
+            let expectation = self.expectation(description: "OK " + String(i))
+            queue.async {
                 do {
                     let markdown = try Markdown(string: "# test line " + String(i), options: .None)
                     let html = try markdown.document()
@@ -103,7 +105,7 @@ class MarkdownTests: XCTestCase {
             }
         }
         
-        self.waitForExpectationsWithTimeout(30, handler: nil)
+        self.waitForExpectations(timeout: 30, handler: nil)
     }
     
     #endif
