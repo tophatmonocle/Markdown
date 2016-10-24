@@ -5,9 +5,9 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/kastopia/MJPopupViewController"
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = 'martinjuhasz'
-  s.source       = { :git => "https://github.com/kastopia/MJPopupViewController.git", :tag => "v0.4.1" }
+  s.source       = { :git => "https://github.com/crossroadlabs/Markdown.git", :tag => "1.0.0-alpha.1" }
   s.platform     = :ios, '8.0'
-s.source_files = 'Markdown/*'
+  s.source_files = 'Markdown/*'
   s.frameworks = 'QuartzCore'
   s.requires_arc = true
   s.dependency 'CDiscount'
