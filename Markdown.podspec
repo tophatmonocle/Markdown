@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author       = 'martinjuhasz'
   s.source       = { :git => "https://github.com/kastopia/MJPopupViewController.git", :tag => "v0.4.1" }
   s.platform     = :ios, '8.0'
-  s.source_files = 'Source/*.{h,m}'
+s.source_files = 'Markdown/Classes/**/*'
   s.frameworks = 'QuartzCore'
   s.requires_arc = true
   s.dependency 'CDiscount'
